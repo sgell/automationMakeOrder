@@ -13,10 +13,14 @@ import java.awt.*;
 public class Order {
     @Test
     public static void makeOrder() throws AWTException, InterruptedException {
+        String expectedTitle = "Home Page";
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://magento.softwaretestingboard.com/");
+        String actualTitle = driver.getTitle();
 
+        
+        Assert.assertEquals(actualTitle,expectedTitle);
         // sing in
         WebElement sign = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/a"));
         sign.click();
